@@ -1,6 +1,3 @@
-var omoroAudio = new Audio();
-        omoroAudio.src = "./omoro_kansei.mp3";
-        omoroAudio.volume = 0.5;
 var boxElement =  document.getElementById("box");
 var buttonElement = document.getElementById("button");
 var countElement = document.getElementById("buttonCount");
@@ -13,8 +10,10 @@ boxElement.addEventListener('touchend', event => { /*iOS10のSafariで複数指�
 function process(){
     count++;
     countElement.textContent = count.toString();
-    omoroAudio.currentTime = 0;
-    omoroAudio.play();
+    var omoroAudio = new Audio();
+            omoroAudio.src = "omoro_kansei.mp3";
+            omoroAudio.volume = 0.5;
+            omoroAudio.play();
     console.log("ボタンがクリックされた! カウント:" + count.toString() + "回");
 }
 
