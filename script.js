@@ -10,10 +10,18 @@ boxElement.addEventListener('touchend', event => { /*iOS10のSafariで複数指�
     event.preventDefault();
 }, false);
 
-buttonElement.onclick = function() {
+function process(){
     count++;
     countElement.textContent = count.toString();
     omoroAudio.currentTime = 0;
     omoroAudio.play();
     console.log("ボタンがクリックされた! カウント:" + count.toString() + "回");
+}
+
+buttonElement.onclick = function() {
+    process();
+}
+
+buttonElement.ontouchstart = function() {
+    process();
 }
