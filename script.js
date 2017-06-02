@@ -6,14 +6,12 @@ var buttonElement = document.getElementById("button");
 var countElement = document.getElementById("buttonCount");
 var count = 0;
 
-boxElement.addEventListener('touchend', event => { /*iOS10のSafariで複数指で拡大できてしまうのを防ぐ*/
-    event.preventDefault();
-}, false);
-
 function process(){
     count++;
     countElement.textContent = count.toString();
-    omoroAudio.currentTime = 0;
+    if( typeof( omoroAudio.currentTime ) != 'undefined' ){
+        omoroAudio.currentTime = 0;
+    }
     omoroAudio.play();
     console.log("ボタンがクリックされた! カウント:" + count.toString() + "回");
 }
@@ -22,6 +20,10 @@ buttonElement.onclick = function() {
     process();
 }
 
-buttonElement.ontouchstart = function() {
+buttonElement.ontouchend = function() {
     process();
 }
+
+boxElement.addEventListener('touchend', event => { /*iOS10のSafariで複数指で拡大できてしまうのを防ぐ*/
+    event.preventDefault();
+}, false);
