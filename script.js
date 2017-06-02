@@ -7,13 +7,12 @@ var countElement = document.getElementById("buttonCount");
 var count = 0;
 
 function process(){
-    count++;
-    countElement.textContent = count.toString();
     if( typeof( omoroAudio.currentTime ) != 'undefined' ){
         omoroAudio.currentTime = 0;
     }
     omoroAudio.play();
-    console.log("ボタンがクリックされた! カウント:" + count.toString() + "回");
+    count++;
+    countElement.textContent = count.toString();
 }
 
 buttonElement.onclick = function() {
